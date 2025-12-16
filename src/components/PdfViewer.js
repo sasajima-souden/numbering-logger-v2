@@ -3,7 +3,7 @@ import * as pdfjsLib from 'pdfjs-dist';
 import { Canvas, Text, Ellipse, Group } from 'fabric';
 import './PdfViewer.css';
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = `/pdf.worker.min.mjs`;
+pdfjsLib.GlobalWorkerOptions.workerSrc = `${process.env.PUBLIC_URL}/pdf.worker.min.mjs`;
 
 const generateId = () => `anno_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 

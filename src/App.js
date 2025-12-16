@@ -78,6 +78,8 @@ function App() {
       setPdfFileName(file.name);
       setHistory([{}]);
       setHistoryIndex(0);
+      setAnnotationNumber(1); // Reset annotation number
+      setScale(1.0); // Reset zoom level
     }
     // Clear the file input value so that selecting the same file again triggers onChange
     event.target.value = null;
@@ -93,10 +95,10 @@ function App() {
       const existingPdfBytes = await pdfFile.arrayBuffer();
       const pdfDoc = await PDFDocument.load(existingPdfBytes);
       pdfDoc.registerFontkit(fontkit);
-      const fontUrls = {
-        'Noto Sans JP': '/fonts/NotoSansJP-Regular.ttf',
-        'M PLUS 1p': '/fonts/MPLUS1p-Regular.ttf',
-      };
+        const fontUrls = {
+          'Noto Sans JP': `${process.env.PUBLIC_URL}/fonts/NotoSansJP-Regular.ttf`,
+          'M PLUS 1p': `${process.env.PUBLIC_URL}/fonts/MPLUS1p-Regular.ttf`,
+        };
       const fontBytes = await Promise.all(Object.values(fontUrls).map(url => fetch(url).then(res => res.arrayBuffer())));
       const embeddedFonts = {};
       embeddedFonts['Noto Sans JP'] = await pdfDoc.embedFont(fontBytes[0]);
