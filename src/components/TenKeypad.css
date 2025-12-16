@@ -1,0 +1,27 @@
+.ten-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  padding: 5px;
+  background-color: #4a4a4a;
+  border-radius: 5px;
+}
+
+.keypad-row {
+  display: contents;
+}
+
+.ten-keypad button {
+  font-size: 1.2rem;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #555;
+  background-color: #6a6a6a;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.ten-keypad button:hover {
+  background-color: #7a7a7a;
+}

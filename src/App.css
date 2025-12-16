@@ -1,0 +1,23 @@
+body {
+  background-color: #f5f5f5;
+  overflow: hidden;
+}
+
+.App {
+  display: flex;
+  height: 100vh;
+}
+
+.App.toolbar-left {
+  flex-direction: row-reverse; /* Corrected */
+}
+
+.App.toolbar-right {
+  flex-direction: row; /* Corrected */
+}
+
+.App-main {
+  flex-grow: 1;
+  overflow: auto;
+  padding: 20px;
+}
