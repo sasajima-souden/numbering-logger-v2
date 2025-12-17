@@ -1,6 +1,33 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './TenKeypad.css';
 
+// Web Audio APIを使用して音を再生する関数
+const playSound = (frequency = 523.25, duration = 0.05, type = 'sine') => {
+  // Safari対応のためwindow.webkitAudioContextも考慮
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  if (!audioContext) {
+    console.warn('Web Audio API is not supported in this browser');
+    return; // Web Audio APIがサポートされていない場合は何もしない
+  }
+
+  const oscillator = audioContext.createOscillator();
+  const gainNode = audioContext.createGain();
+
+  oscillator.type = type; // 音の波形タイプ (sine, square, sawtooth, triangle)
+  oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime); // 周波数
+
+  // ポップ音を防ぐためにゲイン（音量）を徐々に下げる
+  gainNode.gain.setValueAtTime(0.5, audioContext.currentTime); // 最大音量
+  gainNode.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + duration); // フェードアウト
+
+  oscillator.connect(gainNode);
+  gainNode.connect(audioContext.destination);
+
+  oscillator.start(audioContext.currentTime); // 音を再生開始
+  oscillator.stop(audioContext.currentTime + duration); // 指定時間後に再生停止
+};
+
+
 const TenKeypad = ({ setNumberValue, numberValue }) => {
   const [shouldOverwrite, setShouldOverwrite] = useState(true);
   const numberValueRef = useRef(numberValue);
@@ -10,6 +37,7 @@ const TenKeypad = ({ setNumberValue, numberValue }) => {
   }, [numberValue]);
 
   const handleNumberClick = (number) => {
+    playSound(); // 数字ボタンクリック時に標準のビープ音を鳴らす
     if (shouldOverwrite) {
       setNumberValue(parseInt(number, 10));
       setShouldOverwrite(false);
@@ -21,11 +49,13 @@ const TenKeypad = ({ setNumberValue, numberValue }) => {
   };
 
   const handleClear = () => {
+    playSound(440, 0.07); // クリアボタンクリック時に少し低い音を鳴らす
     setNumberValue(1);
     setShouldOverwrite(true);
   };
   
   const handleBackspace = () => {
+    playSound(440, 0.07); // バックスペースボタンクリック時に少し低い音を鳴らす
     const currentVal = numberValueRef.current.toString();
     if (currentVal.length > 1) {
       setNumberValue(parseInt(currentVal.slice(0, -1), 10));

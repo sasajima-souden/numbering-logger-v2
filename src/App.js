@@ -152,7 +152,7 @@ function App() {
       const a = document.createElement('a');
       a.href = url;
       const baseName = pdfFileName.replace(/\.[^/.]+$/, '');
-      a.download = `${baseName}_annotated.pdf`;
+      a.download = `${baseName}_ナンバリング位置図.pdf`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -174,7 +174,7 @@ function App() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `${baseName || 'annotations'}.json`;
+    a.download = `${baseName || 'annotations'}_注釈情報.json`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -209,7 +209,7 @@ function App() {
     const a = document.createElement('a');
     a.href = url;
     const baseName = pdfFileName.replace(/\.[^/.]+$/, "");
-    a.download = `${baseName || 'annotations'}.csv`;
+    a.download = `${baseName || 'annotations'}_ナンバリング一覧.csv`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
