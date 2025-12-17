@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "https://sasajima-souden.github.io/numbering-logger-v2/static/css/main.7e541fcf.css",
+    "main.js": "https://sasajima-souden.github.io/numbering-logger-v2/static/js/main.60a68af0.js",
+    "static/media/yoko_b_white.png": "https://sasajima-souden.github.io/numbering-logger-v2/static/media/yoko_b_white.132f31826ef815a67dc2.png",
+    "index.html": "https://sasajima-souden.github.io/numbering-logger-v2/index.html",
+    "main.7e541fcf.css.map": "https://sasajima-souden.github.io/numbering-logger-v2/static/css/main.7e541fcf.css.map",
+    "main.60a68af0.js.map": "https://sasajima-souden.github.io/numbering-logger-v2/static/js/main.60a68af0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7e541fcf.css",
+    "static/js/main.60a68af0.js"
+  ]
+}
