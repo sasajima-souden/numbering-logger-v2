@@ -28,7 +28,7 @@ const playSound = (frequency = 523.25, duration = 0.05, type = 'sine') => {
 };
 
 
-const TenKeypad = ({ setNumberValue, numberValue }) => {
+const TenKeypad = ({ setNumberValue, numberValue, setToolMode }) => {
   const [shouldOverwrite, setShouldOverwrite] = useState(true);
   const numberValueRef = useRef(numberValue);
 
@@ -38,6 +38,7 @@ const TenKeypad = ({ setNumberValue, numberValue }) => {
 
   const handleNumberClick = (number) => {
     playSound(); // 数字ボタンクリック時に標準のビープ音を鳴らす
+    setToolMode('add'); // ここで追加モードに切り替える
     if (shouldOverwrite) {
       setNumberValue(parseInt(number, 10));
       setShouldOverwrite(false);

@@ -164,7 +164,7 @@ function Toolbar({
             </div>
           </div>
         </div>
-        <TenKeypad setNumberValue={setAnnotationNumber} numberValue={annotationNumber} />
+        <TenKeypad setNumberValue={setAnnotationNumber} numberValue={annotationNumber} setToolMode={setToolMode} />
         
         <div className="tool-grid-row">
           <div className="tool-group">
@@ -230,7 +230,7 @@ function Toolbar({
           </div>
           <button className="tool-button settings-button" onClick={openSettings}>設定</button>
         </div>
-        <TenKeypad setNumberValue={setThickness} numberValue={thickness} />
+        <TenKeypad setNumberValue={setThickness} numberValue={thickness} setToolMode={setToolMode} />
       </div>
     </div>
   );
